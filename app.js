@@ -1,12 +1,19 @@
 'use strict';
 
 var allProjects = [];
-
-function Project (preview, link) {
+//make a js for all the raw data on projects
+function Project (/*rawData*/) {
   this.preview = preview;
   this.link = link;
+  //this.time= publishedDate;
+  //this.projectUrl= projectUrl;
+  //this.body= content;
+
   allProjects.push(this);
-  this.id = project;
 }
 
 //new Project(image,src?)
+//Making clones from raw data to pick and choose what DOM renders
+Project.prototype.toHtml = function() {
+  var $newProject = $
+}
