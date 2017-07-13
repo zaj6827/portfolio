@@ -1,3 +1,4 @@
+'use strict';
 var allProjects = [];
 //make a js for all the raw data on projects
 function Project (/*rawData*/) {

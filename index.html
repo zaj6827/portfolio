@@ -11,13 +11,16 @@
   <body>
     <!-- NAV BAR IN HEADER -->
     <header>
-      <nav>
-        <ul>
-          <li>Twitter</li>
-          <li>GitHub</li>
-          <li>LinkedIn</li>
-        </ul>
-      </nav>
+      <nav class="main-nav">
+      <div class="icon-menu">?</div>
+      <ul>
+        <li class="tab" data-content="projects"><a href="#"> Home</a></li>
+        <li class="tab" data-content="about"><a href="#"> About</a></li>
+        <li><a href="http://twitter.com/" target="_blank"> Twitter</a></li>
+        <li><a href="http://github.com/zaj6827" target="_blank"> GitHub</a></li>
+        <li><a href="http://linkedin.com">LinkedIn</a></li>
+      </ul>
+    </nav>
     </header>
 
     <!-- MAIN STARTS HERE-->
@@ -25,13 +28,13 @@
       <section>
         <!-- Personal Photo-->
       </section>
-      <section>
+      <section id="about" class="tab-content" data-content="about">
         <!--h1 About Me, short summary of myself in <p>?-->
-        <h1>About me </h1>
+        <h1>About me, blah blah blah</h1>
         <!--h2 Projects (DOM RENDERING) 3, spaced equally, with Project names above images
         When Image is clicked, takes them to said project. Should look good.-->
       </section>
-      <section>
+      <section data-content="projects">
         <!--Second h2/3? Just a link to take them to an additional projects page,
         projects page should have all projects listed with links and displays (the allProjects array)-->
       </section>
@@ -40,5 +43,9 @@
     <footer>
     <!--footer here, dunno what to put in yet, maybe contact info, although that seems better at the top?-->
     </footer>
+    <!--jquery cdn here. -->
+    <script src='project.js'></script>
+    <script src='app.js'></script>
+    <script src='projectView.js'></script>
   </body>
 </html>
