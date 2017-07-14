@@ -10,7 +10,7 @@
   </head>
   <body>
     <!-- NAV BAR IN HEADER -->
-    <header>
+    <!-- <header>
       <nav class="main-nav">
       <div class="icon-menu">?</div>
       <ul>
@@ -21,7 +21,7 @@
         <li><a href="http://linkedin.com">LinkedIn</a></li>
       </ul>
     </nav>
-    </header>
+    </header> -->
 
     <!-- MAIN STARTS HERE-->
     <main>
@@ -49,5 +49,19 @@
     <script src='project.js'></script>
     <script src='app.js'></script>
     <script src='projectView.js'></script>
+    <!--Handlebars Template -->
+    <script type="text/x-handlebars-template" id="article-template">
+      <article data-category="{{ category }}" data-author="{{ author }}">
+        <header>
+          <h4>{{ title }}</h4>
+          <div class="byline">
+            By <address><a href="{{ authorUrl }}">{{ author }}</a></address>
+            published <time pubdate datetime="2000-01-01">{{ publishedOn }}</time>
+          </div>
+        </header>
+        <section class="article-body">{{{ body }}}</section>
+        <a href="#" class="read-on">Read on &rarr;</a>
+      </article>
+    </script>
   </body>
 </html>

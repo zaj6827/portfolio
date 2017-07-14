@@ -14,18 +14,16 @@ function Project (/*rawData*/) {
 //new Project(image,src?)
 
 //Making clones from raw data to pick and choose what DOM renders
-Project.prototype.toHtml = function() {
-  /*Cloning the template */
-  var $newProject = $('section.template').clone();
-  /*Removing The template class from clones so they aren't hidden */
-  $newProject.removeClass().addClass('domProject');
-  /*If not published yet, give it a different class so it doesn't DOM Render*/
-  if (!this.publishedOn) $newProject.addClass('draft');
-  /*A fancy way to tell the user how long ago this Project was completed*/
-  $newProject.find('time').html('about ' + parseInt((new Date() - new Date(this.publishedOn)) / 60 / 60 / 24 / 1000) + ' days ago');
-  $newProject.append('<hr>');
-  return $newProject;
-}
+Article.prototype.toHtml = function() {
+
+  var template = $('#article-template').html();
+  var comp = Handlebars.compile(template);
+
+  this.daysAgo = parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000);
+  this.publishStatus = this.publishedOn ? `published ${this.daysAgo} days ago` : '(draft)';
+
+  return comp(this);
+};
 
 projectData.sort(function(a, b) {
   /*This will sort the raw data project array, and place the newer projects first */
