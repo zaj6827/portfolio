@@ -1,20 +1,44 @@
 'use strict';
 var allProjects = [];
 //make a js for all the raw data on projects
-function Project (/*rawData*/) {
-  this.preview = preview;
-  this.link = link;
-  //this.time= publishedDate;
-  //this.projectUrl= projectUrl;
-  //this.body= content;
+//make a js for all the raw data on projects
+function Project (rawDataObj) {
+  this.title = rawDataObj.title;
+  this.category = rawDataObj.category;
+  this.author= rawDataObj.author;
+  this.authorUrl= rawDataObj.authorUrl;
+  this.time = rawDataObj.publishedOn;
+  this.body= rawDataObj.body;
 
   allProjects.push(this);
 }
-
 //new Project(image,src?)
+  $newArticle.attr('data-category', this.category);
+   $newArticle.attr('data-author', this.author);
+   $newArticle.find('.byline a').html(this.author);
+   $newArticle.find('.byline a').attr('href', this.authorUrl);
+   $newArticle.find('h1:first').html(this.title);
+  $newArticle.find('.article-body').html(this.body);
+  $newArticle.find('time[pubdate]').attr('datetime', this.publishedOn);
+  $newArticle.find('time[pubdate]').attr('title', this.publishedOn);
+  $newArticle.find('time').html('about ' + parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000) + ' days ago');
+  $newArticle.append('<hr>');
+  return $newArticle;
+};
 
+rawData.sort(function(a,b) {
+  return (new Date(b.publishedOn)) - (new Date(a.publishedOn));
+});
+
+rawData.forEach(function(articleObject) {
+  articles.push(new Article(articleObject));
+});
+
+articles.forEach(function(article){
+  $('#articles').append(article.toHtml());
+});
 //Making clones from raw data to pick and choose what DOM renders
-Article.prototype.toHtml = function() {
+Project.prototype.toHtml = function() {
 
   var template = $('#article-template').html();
   var comp = Handlebars.compile(template);
@@ -25,12 +49,12 @@ Article.prototype.toHtml = function() {
   return comp(this);
 };
 
-projectData.sort(function(a, b) {
+allProjects.sort(function(a, b) {
   /*This will sort the raw data project array, and place the newer projects first */
   return (new Date(b.publishedOn)) - (new Date(a.publishedOn));
 });
 
-projectData.forEach(function(projectObject) {
+allProjects.forEach(function(projectObject) {
   /*forEach will iterate through the array for each index, and push all our clones into the project array*/
   allProjects.push(new Project(projectObject));
 });
