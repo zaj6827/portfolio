@@ -1,20 +1,32 @@
 'use strict';
 var allProjects = [];
 //make a js for all the raw data on projects
-function Project (/*rawData*/) {
-  this.preview = preview;
-  this.link = link;
-  //this.time= publishedDate;
-  //this.projectUrl= projectUrl;
-  //this.body= content;
+//make a js for all the raw data on projects
+function Project (rawDataObj) {
+  this.title = rawDataObj.title;
+  this.category = rawDataObj.category;
+  this.author= rawDataObj.author;
+  this.authorUrl= rawDataObj.authorUrl;
+  this.time = rawDataObj.publishedOn;
+  this.body= rawDataObj.body;
 
   allProjects.push(this);
 }
-
 //new Project(image,src?)
 
+rawData.sort(function(a,b) {
+  return (new Date(b.publishedOn)) - (new Date(a.publishedOn));
+});
+
+rawData.forEach(function(articleObject) {
+  allProjects.push(new Project(articleObject));
+});
+
+allProjects.forEach(function(article){
+  $('#articles').append(article.toHtml());
+});
 //Making clones from raw data to pick and choose what DOM renders
-Article.prototype.toHtml = function() {
+Project.prototype.toHtml = function() {
 
   var template = $('#article-template').html();
   var comp = Handlebars.compile(template);
@@ -25,12 +37,12 @@ Article.prototype.toHtml = function() {
   return comp(this);
 };
 
-projectData.sort(function(a, b) {
+allProjects.sort(function(a, b) {
   /*This will sort the raw data project array, and place the newer projects first */
   return (new Date(b.publishedOn)) - (new Date(a.publishedOn));
 });
 
-projectData.forEach(function(projectObject) {
+allProjects.forEach(function(projectObject) {
   /*forEach will iterate through the array for each index, and push all our clones into the project array*/
   allProjects.push(new Project(projectObject));
 });
