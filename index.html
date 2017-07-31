@@ -7,6 +7,19 @@
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/reset.css">
     <script src = "https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
+    <script type="text/x-handlebars-template" id="article-template">
+      <article data-category="{{ category }}" data-author="{{ author }}">
+        <header>
+          <h4>{{ title }}</h4>
+          <div class="byline">
+            By <address><a href="{{ authorUrl }}">{{ author }}</a></address>
+            published <time pubdate datetime="2000-01-01">{{ publishedOn }}</time>
+          </div>
+        </header>
+        <section class="article-body">{{{ body }}}</section>
+        <a href="#" class="read-on">Read on &rarr;</a>
+      </article>
+    </script>
     <title></title>
   </head>
   <body>
@@ -53,18 +66,5 @@
     <script src='app.js'></script>
     <script src='projectView.js'></script>
     <!--Handlebars Template -->
-    <script type="text/x-handlebars-template" id="article-template">
-      <article data-category="{{ category }}" data-author="{{ author }}">
-        <header>
-          <h4>{{ title }}</h4>
-          <div class="byline">
-            By <address><a href="{{ authorUrl }}">{{ author }}</a></address>
-            published <time pubdate datetime="2000-01-01">{{ publishedOn }}</time>
-          </div>
-        </header>
-        <section class="article-body">{{{ body }}}</section>
-        <a href="#" class="read-on">Read on &rarr;</a>
-      </article>
-    </script>
   </body>
 </html>
