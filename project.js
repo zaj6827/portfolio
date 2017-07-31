@@ -1,5 +1,5 @@
 'use strict';
-
+// TODO: Wrap the entire project in an IIFE for ease of use
 //make a js for all the raw data on projects
 //make a js for all the raw data on projects
 function Project (rawDataObj) {
@@ -14,6 +14,7 @@ function Project (rawDataObj) {
 //new Project(image,src?)
 Project.all = [];
 
+// TODO: Change this functionality to use the .map that is used in Lab 10
 rawData.sort(function(a,b) {
   return (new Date(b.publishedOn)) - (new Date(a.publishedOn));
 });
@@ -77,3 +78,5 @@ Project.fetchAll = function() {
       })
   }
 }
+
+// TODO: add a random .reduce in and display the results in your .html footer
