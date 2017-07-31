@@ -1,0 +1,27 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "301 Portfolio",
+  "main": "\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[Dserver.js)",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zaj6827/portfolio.git"
+  },
+  "keywords": [
+    "node",
+    "js",
+    "postgres"
+  ],
+  "author": "Zach Johnson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zaj6827/portfolio/issues"
+  },
+  "homepage": "https://github.com/zaj6827/portfolio#readme",
+  "dependencies": {
+    "express": "^4.15.3"
+  }
+}
